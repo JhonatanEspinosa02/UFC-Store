@@ -1,45 +1,206 @@
+import { useState } from "react";
+
 function Header() {
+  const [bag, setBag] = useState(false);
+
   return (
     <>
-      <header className="bg-black pb-24">
-        <div className="p-10 flex justify-between items-center">
-          <div className="p-5">
-            <a href="#" className="text-white text-xl font-semibold p-2">
-              UFC Store
-            </a>
+      {/* <header className="bg-black">
+        <div className="p-16 flex justify-evenly">
+          <div>
+            <p className="text-white text-4xl font-bold">UFC Store</p>
           </div>
 
-          <div className="p-5">
-            <a href="#" className="text-white text-xl font-semibold p-2 px-8">
-              About Us
-            </a>
-            <a href="#" className="text-white text-xl font-semibold p-2 px-8">
-              Product's
-            </a>
-            <a href="#" className="text-white text-xl font-semibold p-2 px-8">
-              Social media
-            </a>
-            <button className="bg-red-600 text-white text-xl rounded py-2 px-5">
-              Contact Us
-            </button>
-          </div>
-        </div>
+          <div className="relative group">
+            <img
+              src="/img/icons8-shopping-bag-50.png"
+              alt="Descripción de la imagen"
+              className="w-10 h-10"
+            />
+            <div className="absolute top-full w-96 h-72 left-0  bg-white border border-gray-300 shadow-lg p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <p>The bag is empty</p>
 
-        <div
-          className="flex mx-auto justify-center h-[675px] w-[1250px] brightness-50 contrast-125"
-          style={{ backgroundImage: "url('/img/Brandon-Moreno.webp')" }}
-        >
-          <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-white filter-none uppercase text-4xl font-bold mb-4 md:filter-none">
-              ufc store
-            </h1>
-            <p className="text-white">The best quality and the best price</p>
-            <button className="bg-red-600 text-white text-xl rounded py-2 px-5 my-10">
-              Get started
-            </button>
+              <table className="table-fixed w-full border-collapse border border-gray-200">
+                <thead>
+                  <tr className="bg-gray-100 items-center">
+                    <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">
+                      Image
+                    </th>
+                    <th className="w-2/5 px-4 py-2 border border-gray-200 text-left">
+                      Name
+                    </th>
+                    <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">
+                      Price
+                    </th>
+                    <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">
+                      Quantity
+                    </th>
+                    <th className="w-1/5 px-4 py-2 border border-gray-200"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="px-4 py-2 border border-gray-200">
+                      <img
+                        className="w-14"
+                        src="/public/img_db/Accessorie_KontactAnkle_BlackWhite_03.jpg"
+                        alt="ejemplo"
+                      />
+                    </td>
+                    <td className="px-4 py-2 border border-gray-200">Kontac</td>
+                    <td className="px-4 py-2 border border-gray-200 font-bold">
+                      $500
+                    </td>
+                    <td className="px-4 py-2 border border-gray-200">
+                      <div className="flex items-center justify-center gap-2">
+                        <button className="rounded-lg bg-black text-white px-2">
+                          -
+                        </button>
+                        <span>1</span>
+                        <button className="rounded-lg bg-black text-white px-2">
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2 border border-gray-200 text-center">
+                      <button className="bg-red-500 rounded-full p-2 w-10 h-10 flex items-center justify-center text-white">
+                        x
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>Total a pagar</p>
+              <button className="bg-black mt-3 p-2 text-white w-full">
+                Vaciar carrito
+              </button>
+            </div>
           </div>
         </div>
-      </header>
+      </header> */}
+
+{/* <header className="bg-black">
+  <div className="p-16 flex justify-evenly">
+    <div>
+      <p className="text-white text-4xl font-bold">UFC Store</p>
+    </div>
+
+    <div className="relative">
+      <div className="group inline-block">
+        <img
+          src="/img/icons8-shopping-bag-50.png"
+          alt="Descripción de la imagen"
+          className="w-10 h-10"
+        />
+        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-96 h-72 bg-white border border-gray-300 shadow-lg p-4 opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
+          <p>The bag is empty</p>
+
+          <table className="table-fixed w-full border-collapse border border-gray-200">
+            <thead>
+              <tr className="bg-gray-100 items-center">
+                <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">Image</th>
+                <th className="w-2/5 px-4 py-2 border border-gray-200 text-left">Name</th>
+                <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">Price</th>
+                <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">Quantity</th>
+                <th className="w-1/5 px-4 py-2 border border-gray-200"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border border-gray-200">
+                  <img
+                    className="w-14"
+                    src="/public/img_db/Accessorie_KontactAnkle_BlackWhite_03.jpg"
+                    alt="ejemplo"
+                  />
+                </td>
+                <td className="px-4 py-2 border border-gray-200">Kontac</td>
+                <td className="px-4 py-2 border border-gray-200 font-bold">$500</td>
+                <td className="px-4 py-2 border border-gray-200">
+                  <div className="flex items-center justify-center gap-2">
+                    <button className="rounded-lg bg-black text-white px-2">-</button>
+                    <span>1</span>
+                    <button className="rounded-lg bg-black text-white px-2">+</button>
+                  </div>
+                </td>
+                <td className="px-4 py-2 border border-gray-200 text-center">
+                  <button className="bg-red-500 rounded-full p-2 w-10 h-10 flex items-center justify-center text-white">x</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Total a pagar</p>
+          <button className="bg-black mt-3 p-2 text-white w-full">Vaciar carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header> */}
+
+<header className="bg-black">
+  <div className="p-16 flex justify-evenly">
+    <div>
+      <p className="text-white text-4xl font-bold">UFC Store</p>
+    </div>
+
+    <div className="relative group">
+      <div className="inline-block">
+        <img
+          src="/img/icons8-shopping-bag-50.png"
+          alt="Descripción de la imagen"
+          className="w-10 h-10"
+        />
+      </div>
+      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-96 h-72 bg-white border border-gray-300 shadow-lg p-4 opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
+        <p>The bag is empty</p>
+
+        <table className="table-fixed w-full border-collapse border border-gray-200">
+          <thead>
+            <tr className="bg-gray-100 items-center">
+              <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">Image</th>
+              <th className="w-2/5 px-4 py-2 border border-gray-200 text-left">Name</th>
+              <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">Price</th>
+              <th className="w-1/5 px-4 py-2 border border-gray-200 text-left">Quantity</th>
+              <th className="w-1/5 px-4 py-2 border border-gray-200"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="px-4 py-2 border border-gray-200">
+                <img
+                  className="w-14"
+                  src="/public/img_db/Accessorie_KontactAnkle_BlackWhite_03.jpg"
+                  alt="ejemplo"
+                />
+              </td>
+              <td className="px-4 py-2 border border-gray-200">Kontac</td>
+              <td className="px-4 py-2 border border-gray-200 font-bold">$500</td>
+              <td className="px-4 py-2 border border-gray-200">
+                <div className="flex items-center justify-center gap-2">
+                  <button className="rounded-lg bg-black text-white px-2">-</button>
+                  <span>1</span>
+                  <button className="rounded-lg bg-black text-white px-2">+</button>
+                </div>
+              </td>
+              <td className="px-4 py-2 border border-gray-200 text-center">
+                <button className="bg-red-500 rounded-full p-2 w-10 h-10 flex items-center justify-center text-white">x</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Total a pagar</p>
+        <button className="bg-black mt-3 p-2 text-white w-full">Vaciar carrito</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
     </>
   );
 }
