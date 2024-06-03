@@ -9,22 +9,45 @@ import Accessories from "./components/Accessories";
 // import BrandonMoreno from "./components/BrandonMoreno"
 import { useReducer } from "react";
 import { initialBag, stateProductReducer } from "./reducers/productReducer";
+import {
+  accessorieProduct,
+  glovesProduct,
+  helmetProduct,
+  shortProduct,
+} from "./data/db";
 
 function App() {
+  const routesConfig = [
+    { path: "/helmet", component: Helmet, products: helmetProduct },
+    { path: "/short", component: Short, products: shortProduct },
+    { path: "/glove", component: Glove, products: glovesProduct },
+    {
+      path: "/accessorie",
+      component: Accessories,
+      products: accessorieProduct,
+    },
+  ];
+
   const [state, dispatch] = useReducer(initialBag, stateProductReducer);
 
   return (
     <>
+      {/* <BrandonMoreno/> */}
       <Header />
+
       <Router>
-        {/* <BrandonMoreno/> */}
         <Categories />
-        <Routes>
-          <Route path="/helmet" element={<Helmet />} />
-          <Route path="/short" element={<Short />} />
-          <Route path="/glove" element={<Glove />} />
-          <Route path="/accessorie" element={<Accessories />} />
-        </Routes>
+        <div className="grid grid-cols-4 items-center">
+          <Routes>
+            {routesConfig.map(({ path, component: Component, products }) => (
+              <Route
+                key={path}
+                path={path}
+                element={<Component products={products} dispatch={dispatch} />}
+              />
+            ))}
+          </Routes>
+        </div>
       </Router>
 
       <main className="p-20">
@@ -39,7 +62,11 @@ function App() {
 
         <div className="grid grid-cols-4 items-center">
           {state.data.map((product) => (
-            <PopularProducts key={product.id} product={product} dispatch={dispatch} />
+            <PopularProducts
+              key={product.id}
+              product={product}
+              dispatch={dispatch}
+            />
           ))}
         </div>
         <div className="p-14 mt-10">
